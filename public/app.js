@@ -19,10 +19,10 @@ function setup(){
     createCanvas(windowWidth, windowHeight);
     background(255);
 
-    r=random(255);
+    r=random(100);
     g=random(255);
-    b=random(255);
-    size=random(50);
+    b=random(172,220);
+    size=random(50,150);
 
 
 }
@@ -44,7 +44,13 @@ function mouseMoved(){
 }
 
 function drawObj(obj){
-    noStroke();
-    fill(obj.r,obj.g,obj.b);
-    ellipse(obj.x,obj.y,obj.size);
+    stroke(255,0,0);
+    fill(255,183,obj.b,obj.r);
+    //fill(obj.r,0,0);
+    //ellipse(obj.x,obj.y,obj.size);
+    beginShape();
+    vertex(obj.x, obj.y);
+    bezierVertex(obj.x - obj.size / 2, obj.y - obj.size / 2, obj.x - obj.size, obj.y + obj.size / 3, obj.x, obj.y + obj.size);
+    bezierVertex(obj.x + obj.size, obj.y + obj.size / 3, obj.x + obj.size / 2, obj.y - obj.size / 2, obj.x, obj.y);
+    endShape(CLOSE);
 }
